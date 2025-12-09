@@ -65,15 +65,6 @@ act workflow_dispatch \
   -j build
 ```
 
-- LWS iOS simulator (x86_64)
-```sh
-act workflow_dispatch \
-  -W .github/workflows/build_lws_ios_x86_64.yml \
-  -P macos-latest=-self-hosted \
-  --var HOST_MACOS=true \
-  -j build
-```
-
 - LWS iOS device (arm64)
 ```sh
 act workflow_dispatch \
@@ -97,16 +88,6 @@ act workflow_dispatch \
 ```sh
 act workflow_dispatch \
   -W .github/workflows/build_v8_macos_arm64.yml \
-  -P macos-latest=-self-hosted \
-  --var HOST_MACOS=true \
-  --input v8_version=13.5.119 \
-  -j build
-```
-
-- V8 iOS simulator (x86_64)
-```sh
-act workflow_dispatch \
-  -W .github/workflows/build_v8_ios_x86_64.yml \
   -P macos-latest=-self-hosted \
   --var HOST_MACOS=true \
   --input v8_version=13.5.119 \

@@ -51,13 +51,6 @@ jobs:
       v8_version: ${{ inputs.v8_version }}
     secrets: inherit
 
-  v8_ios_x86_64:
-    if: ${{ vars.SKIP_APPLE != 'true' }}
-    uses: ./.github/workflows/build_v8_ios_x86_64.yml
-    with:
-      v8_version: ${{ inputs.v8_version }}
-    secrets: inherit
-
   v8_macos_arm64:
     if: ${{ vars.SKIP_APPLE != 'true' }}
     uses: ./.github/workflows/build_v8_macos_arm64.yml
@@ -130,11 +123,6 @@ jobs:
     uses: ./.github/workflows/build_lws_ios_arm64.yml
     secrets: inherit
 
-  lws_ios_x86_64:
-    if: ${{ vars.SKIP_APPLE != 'true' }}
-    uses: ./.github/workflows/build_lws_ios_x86_64.yml
-    secrets: inherit
-
   lws_macos_arm64:
     if: ${{ vars.SKIP_APPLE != 'true' }}
     uses: ./.github/workflows/build_lws_macos_arm64.yml
@@ -162,7 +150,6 @@ jobs:
       - v8_android_arm64
       - v8_android_x86_64
       - v8_ios_arm64
-      - v8_ios_x86_64
       - v8_macos_arm64
       - v8_macos_x86_64
       - v8_linux_arm64
@@ -176,7 +163,6 @@ jobs:
       - lws_android_arm32
       - lws_android_x86_64
       - lws_ios_arm64
-      - lws_ios_x86_64
       - lws_macos_arm64
       - lws_macos_x86_64
       - lws_windows_arm64
@@ -188,7 +174,6 @@ jobs:
         (needs.v8_android_arm64.result == 'success' || needs.v8_android_arm64.result == 'skipped') &&
         (needs.v8_android_x86_64.result == 'success' || needs.v8_android_x86_64.result == 'skipped') &&
         (needs.v8_ios_arm64.result == 'success' || needs.v8_ios_arm64.result == 'skipped') &&
-        (needs.v8_ios_x86_64.result == 'success' || needs.v8_ios_x86_64.result == 'skipped') &&
         (needs.v8_macos_arm64.result == 'success' || needs.v8_macos_arm64.result == 'skipped') &&
         (needs.v8_macos_x86_64.result == 'success' || needs.v8_macos_x86_64.result == 'skipped') &&
         (needs.v8_linux_arm64.result == 'success' || needs.v8_linux_arm64.result == 'skipped') &&
@@ -202,7 +187,6 @@ jobs:
         (needs.lws_android_arm32.result == 'success' || needs.lws_android_arm32.result == 'skipped') &&
         (needs.lws_android_x86_64.result == 'success' || needs.lws_android_x86_64.result == 'skipped') &&
         (needs.lws_ios_arm64.result == 'success' || needs.lws_ios_arm64.result == 'skipped') &&
-        (needs.lws_ios_x86_64.result == 'success' || needs.lws_ios_x86_64.result == 'skipped') &&
         (needs.lws_macos_arm64.result == 'success' || needs.lws_macos_arm64.result == 'skipped') &&
         (needs.lws_macos_x86_64.result == 'success' || needs.lws_macos_x86_64.result == 'skipped') &&
         (needs.lws_windows_arm64.result == 'success' || needs.lws_windows_arm64.result == 'skipped') &&
